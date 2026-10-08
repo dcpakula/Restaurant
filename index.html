@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nina’s — Chinese Kitchen</title>
+  <meta name="description" content="Nina’s is a lantern-lit Chinese kitchen serving soup dumplings, Peking duck, and family recipes in a quiet dining room." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #140e0c;
+      --paper: #f6efe4;
+      --cream: #efe4d4;
+      --red: #b4332a;
+      --red-deep: #8c241d;
+      --gold: #c6a15b;
+      --gold-soft: #e7d3a8;
+      --muted: #7a6a5c;
+      --line: rgba(198, 161, 91, 0.35);
+      --shadow: 0 24px 60px rgba(20, 14, 12, 0.28);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: "Outfit", sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 4vw;
+      background: rgba(20, 14, 12, 0.78);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+    .mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      display: grid;
+      place-items: center;
+      color: var(--gold-soft);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 20px;
+    }
+    nav { display: flex; gap: 26px; font-size: 14px; color: var(--cream); }
+    nav a:hover { color: var(--gold-soft); }
+    .reserve-link {
+      border: 1px solid var(--gold);
+      color: var(--gold-soft);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .reserve-link:hover { background: var(--gold); color: var(--ink); }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+      padding: 48px 4vw 72px;
+    }
+    .eyebrow {
+      color: var(--gold);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 18px;
+    }
+    h1, h2, h3 { font-family: "Cormorant Garamond", serif; font-weight: 500; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(64px, 8vw, 108px); line-height: 0.88; margin: 0 0 18px; }
+    h1 em { font-style: italic; color: var(--gold-soft); }
+    .lede { font-size: 18px; max-width: 460px; color: #eadfce; }
+    .hero-actions { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .btn-red { background: var(--red); color: white; }
+    .btn-red:hover { background: var(--red-deep); }
+    .btn-ghost { border-color: var(--line); color: var(--paper); background: transparent; }
+    .hero-photo {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 560px;
+      box-shadow: var(--shadow);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; min-height: 560px; }
+    .caption {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: rgba(20,14,12,0.72);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 13px;
+    }
+
+    section { padding: 88px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 36px; }
+    h2 { font-size: clamp(40px, 5vw, 64px); margin: 0; line-height: 0.95; }
+    .section-head p { max-width: 360px; color: #d9ccbb; margin: 0; }
+
+    .story {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .story img { width: 100%; height: 620px; object-fit: cover; border-radius: 24px; }
+    .story h2 { margin-bottom: 16px; }
+    .story p { color: #eadfce; }
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
+    .fact {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+    .fact strong { display: block; font-family: "Cormorant Garamond", serif; font-size: 28px; font-weight: 500; }
+    .fact span { color: var(--muted); font-size: 13px; }
+
+    .menu-grid, .gallery, .visit-grid { display: grid; gap: 18px; }
+    .menu-grid { grid-template-columns: 1.2fr 0.8fr 0.8fr; }
+    .card {
+      background: #1d1512;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 22px;
+      overflow: hidden;
+    }
+    .card img { width: 100%; height: 240px; object-fit: cover; }
+    .card.feature img { height: 100%; min-height: 420px; }
+    .card.feature { position: relative; }
+    .card.feature .card-body {
+      position: absolute;
+      inset: auto 0 0 0;
+      background: linear-gradient(transparent, rgba(12,8,7,0.92));
+      padding: 28px;
+    }
+    .card-body { padding: 20px 20px 22px; }
+    .price { color: var(--gold); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; }
+    .card h3 { margin: 6px 0 8px; font-size: 32px; }
+    .card p { margin: 0; color: #d8cbb9; font-size: 15px; }
+    .menu-list { margin-top: 22px; display: grid; gap: 0; }
+    .dish {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .dish b { font-weight: 500; }
+    .dish span { color: #cbbba6; font-size: 14px; display: block; }
+    .dish em { font-style: normal; color: var(--gold-soft); }
+
+    .gallery { grid-template-columns: 1.4fr 1fr 1fr; }
+    .gallery figure { margin: 0; position: relative; border-radius: 22px; overflow: hidden; }
+    .gallery img { width: 100%; height: 320px; object-fit: cover; }
+    .gallery figure:first-child img { height: 100%; min-height: 320px; }
+    .gallery figcaption {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      background: rgba(20,14,12,0.7);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .visit {
+      background:
+        radial-gradient(600px 280px at 10% 0%, rgba(180, 51, 42, 0.22), transparent 60%),
+        #100c0a;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .visit-grid { grid-template-columns: 0.9fr 1.1fr; align-items: start; }
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      background: #1b1411;
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    label { display: grid; gap: 6px; font-size: 13px; color: #d7c9b6; }
+    label.full { grid-column: 1 / -1; }
+    input, select, textarea {
+      background: #120e0c;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+      border-radius: 12px;
+      padding: 12px 12px;
+      font: inherit;
+    }
+    textarea { min-height: 90px; resize: vertical; }
+    .note { color: var(--gold-soft); min-height: 24px; grid-column: 1 / -1; margin: 0; }
+    .hours { display: grid; gap: 10px; margin-top: 18px; }
+    .hours div { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 8px; }
+
+    footer {
+      padding: 28px 4vw 40px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #b5a594;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .hero, .story, .menu-grid, .gallery, .visit-grid { grid-template-columns: 1fr; }
+      .hero-photo, .hero-photo img, .story img { min-height: 320px; height: 360px; }
+      .card.feature img { min-height: 280px; height: 320px; }
+      .facts { grid-template-columns: 1fr; }
+      form { grid-template-columns: 1fr; }
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="#top"><span class="mark">宁</span> Nina’s</a>
+    <nav>
+      <a href="#story">Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="reserve-link" href="#visit">Reserve</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Chinese kitchen · evening service</div>
+        <h1>Nina’s<br /><em>table.</em></h1>
+        <p class="lede">A small dining room of red lanterns, lacquer, and the recipes Nina grew up finishing at the pass: soup dumplings, roast duck, and a mapo tofu that still bites back.</p>
+        <div class="hero-actions">
+          <a class="btn btn-red" href="#menu">See the menu</a>
+          <a class="btn btn-ghost" href="#visit">Book a table</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="imagine_images/69rkx.jpg" alt="Nina’s red door and lanterns at dusk" />
+        <div class="caption">Open nightly from 5 · walk-ins after 8:30</div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="wrap story">
+        <img src="imagine_images/GDFah.jpg" alt="Chef Nina in the kitchen" />
+        <div>
+          <div class="eyebrow">The kitchen</div>
+          <h2>Named for the person still at the stove.</h2>
+          <p>Nina Chen opened the room after ten years in hotel kitchens, with one rule: the dumplings get pleated by hand, and the duck finishes in the oven until the skin crackles. The dining room is dark wood and white linen. The cooking is louder.</p>
+          <p>Suppliers are close — ducks from a Hudson Valley farm, tofu pressed the morning of service, scallions from the market two blocks over. Tea is poured before the menus land.</p>
+          <div class="facts">
+            <div class="fact"><strong>42</strong><span>seats, no private room</span></div>
+            <div class="fact"><strong>2016</strong><span>first service</span></div>
+            <div class="fact"><strong>11</strong><span>pleats, every dumpling</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What leaves the pass.</h2>
+          <p>A short card. Order family-style, or let the kitchen send a tasting if the table is four or fewer.</p>
+        </div>
+        <div class="menu-grid">
+          <article class="card feature">
+            <img src="imagine_images/uH6pv.jpg" alt="Banquet of dumplings, duck, noodles, and mapo tofu" />
+            <div class="card-body">
+              <div class="price">For the table</div>
+              <h3>Evening banquet</h3>
+              <p>Dumplings, duck, mapo, garlic beans, and scallion noodles. $68 a person, two-person minimum.</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="imagine_images/xXgax.jpg" alt="Steamed soup dumplings in a bamboo steamer" />
+            <div class="card-body">
+              <div class="price">$16</div>
+              <h3>Soup dumplings</h3>
+              <p>Pork and ginger, black vinegar, chili oil. Six to an order. Ask for the crab ones on Fridays.</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="imagine_images/q04yU.jpg" alt="Lacquered Peking duck with pancakes and hoisin" />
+            <div class="card-body">
+              <div class="price">$78</div>
+              <h3>Peking duck</h3>
+              <p>Half bird, pancakes, cucumber, scallion, hoisin. Whole bird with 24 hours’ notice.</p>
+            </div>
+          </article>
+        </div>
+        <div class="menu-list">
+          <div class="dish"><div><b>Scallion oil noodles</b><span>Wheat noodles, soy, fried scallion</span></div><em>18</em></div>
+          <div class="dish"><div><b>Mapo tofu</b><span>Silken tofu, beef, fermented broad bean, numbing pepper</span></div><em>22</em></div>
+          <div class="dish"><div><b>Garlic green beans</b><span>Blistered, with fried garlic and a little sugar</span></div><em>16</em></div>
+          <div class="dish"><div><b>Chili wontons</b><span>Red oil, sesame, crushed peanut</span></div><em>15</em></div>
+          <div class="dish"><div><b>Jasmine tea service</b><span>Pot for the table, refilled</span></div><em>6</em></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The room, the plates.</h2>
+          <p>Lantern light, lattice screens, and the garden door open when the weather allows.</p>
+        </div>
+        <div class="gallery">
+          <figure>
+            <img src="imagine_images/wdtpv.jpg" alt="Dining room with red lanterns and lattice screens" />
+            <figcaption>Dining room</figcaption>
+          </figure>
+          <figure>
+            <img src="imagine_images/xXgax.jpg" alt="Soup dumplings steaming" />
+            <figcaption>Dumplings</figcaption>
+          </figure>
+          <figure>
+            <img src="imagine_images/q04yU.jpg" alt="Peking duck platter" />
+            <figcaption>Duck</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" id="visit">
+      <div class="wrap visit-grid">
+        <div>
+          <div class="eyebrow">Visit</div>
+          <h2>A table by the lanterns.</h2>
+          <p>18 Mercer Lane, Hudson, New York. Street parking after six. The red door is the one with two lanterns.</p>
+          <div class="hours">
+            <div><span>Tuesday – Thursday</span><span>5:00 – 10:00</span></div>
+            <div><span>Friday – Saturday</span><span>5:00 – 11:00</span></div>
+            <div><span>Sunday</span><span>5:00 – 9:00</span></div>
+            <div><span>Monday</span><span>Closed</span></div>
+          </div>
+        </div>
+        <form id="reserve">
+          <label>Name<input name="name" required placeholder="Your name" /></label>
+          <label>Party<select name="party"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
+          <label>Date<input type="date" name="date" required /></label>
+          <label>Time<select name="time"><option>5:30</option><option>6:15</option><option>7:00</option><option>7:45</option><option>8:30</option></select></label>
+          <label class="full">Note<textarea name="note" placeholder="Allergies, a birthday, the garden table if it’s free"></textarea></label>
+          <button class="btn btn-red full" type="submit">Request a table</button>
+          <p class="note" id="thanks"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Nina’s · Chinese kitchen</span>
+    <span>hello@ninas.kitchen · (518) 555-0148</span>
+  </footer>
+
+  <script>
+    document.getElementById("reserve").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const data = new FormData(event.target);
+      document.getElementById("thanks").textContent =
+        "Request held for " + data.get("name") + ", party of " + data.get("party") + " on " + data.get("date") + " at " + data.get("time") + ". We’ll confirm by phone.";
+      event.target.reset();
+    });
+  </script>
+</body>
+</html>
